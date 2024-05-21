@@ -12,15 +12,15 @@ public class EnemySpawner extends Actor {
     }
 
     public void spawnEnemy() {
-        for (int i = 0; i < 5; i++) {
-            if (spawntimer > 0) {
-                spawntimer--;
-            }
-            if (spawntimer == 0) {
-                getWorld().addObject(enemy, getX(), getY());
-                spawntimer = enemy.getSpawnTimer() * 2;
-            }
+
+        if (spawntimer > 0) {
+            spawntimer--;
         }
+        if (spawntimer == 0) {
+            getWorld().addObject(enemy, getX(), getY());
+            spawntimer = enemy.getSpawnTimer();
+        }
+
     }
 
     @Override

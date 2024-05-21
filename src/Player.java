@@ -5,23 +5,35 @@ import greenfoot.GreenfootImage;
 public class Player extends Actor {
 
     private int HP;
+    private int initialHP;
     private int currency;
     private int speed;
     GreenfootImage image;
-    int cooldown = 0;
+    private int ShotCooldown;
 
 
     public Player() {
+        this.initialHP = 5;
+        this.ShotCooldown = 0;
         this.HP = 5;
-        this.currency = 0;
+        this.currency = 400;
         this.speed = 7;
         this.image = new GreenfootImage("Images/spaceship.png");
         setImage(image);
     }
 
+    public int getInitialHP() {
+        return initialHP;
+    }
+
+    public void setInitialHP(int initialHP) {
+        this.initialHP = initialHP;
+    }
+
     public int getCurrency() {
         return currency;
     }
+
     public void setCurrency(int currency) {
         this.currency = currency;
     }
@@ -42,16 +54,24 @@ public class Player extends Actor {
         this.HP = HP;
     }
 
+    public int getShotCooldown() {
+        return ShotCooldown;
+    }
+
+    public void setShotCooldown(int shotCooldown) {
+        this.ShotCooldown = shotCooldown;
+    }
+
     public void shoot() {
         Bullet bullet = new Bullet();
         getWorld().addObject(bullet, getX(), getY());
-        cooldown = 25;
+        setShotCooldown(25);
     }
 
     @Override
     public void act() {
-        if (cooldown > 0) {
-            cooldown--;
+        if (ShotCooldown > 0) {
+            ShotCooldown--;
         }
         if (Greenfoot.isKeyDown("w")) {
             setLocation(getX(), getY() - speed);
@@ -65,7 +85,7 @@ public class Player extends Actor {
         if (Greenfoot.isKeyDown("d")) {
             setLocation(getX() + speed, getY());
         }
-        if (Greenfoot.isKeyDown("up") && cooldown == 0) {
+        if (Greenfoot.isKeyDown("up") && ShotCooldown == 0) {
             shoot();
         }
         if (HP == 0) {

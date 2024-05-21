@@ -3,7 +3,7 @@ import greenfoot.GreenfootImage;
 
 public class Bullet extends Actor {
 
-    private final int bulletDamage;
+    private int bulletDamage;
     GreenfootImage image;
 
 
@@ -11,6 +11,14 @@ public class Bullet extends Actor {
         bulletDamage = 2;
         this.image = new GreenfootImage("Images/bullet_level1.png");
         setImage(image);
+    }
+
+    public int getBulletDamage() {
+        return bulletDamage;
+    }
+
+    public void setBulletDamage(int bulletDamage) {
+        this.bulletDamage = bulletDamage;
     }
 
     @Override
