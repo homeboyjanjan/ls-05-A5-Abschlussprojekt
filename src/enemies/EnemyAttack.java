@@ -1,5 +1,8 @@
+package enemies;
+
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
+import player.Player;
 
 public class EnemyAttack extends Actor {
 
@@ -8,7 +11,7 @@ public class EnemyAttack extends Actor {
 
     public EnemyAttack() {
         this.speed = 6;
-        this.image = new GreenfootImage("Images/enemy_attack.png");
+        this.image = new GreenfootImage("images/enemy_attack.png");
         setImage(image);
     }
 

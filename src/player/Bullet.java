@@ -1,24 +1,19 @@
+package player;
+
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
+import enemies.Enemy;
 
 public class Bullet extends Actor {
 
-    private int bulletDamage;
+    public int bulletDamage;
     GreenfootImage image;
 
 
-    public Bullet() {
-        bulletDamage = 2;
-        this.image = new GreenfootImage("Images/bullet_level1.png");
-        setImage(image);
-    }
-
-    public int getBulletDamage() {
-        return bulletDamage;
-    }
-
-    public void setBulletDamage(int bulletDamage) {
+    public Bullet(int bulletDamage) {
         this.bulletDamage = bulletDamage;
+        this.image = new GreenfootImage("images/bullet_level1.png");
+        setImage(image);
     }
 
     @Override

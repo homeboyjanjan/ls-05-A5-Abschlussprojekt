@@ -1,6 +1,9 @@
+package player;
+
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
+import worlds.Gameover;
 
 public class Player extends Actor {
 
@@ -10,16 +13,24 @@ public class Player extends Actor {
     private int speed;
     GreenfootImage image;
     private int ShotCooldown;
-
+    private int bulletDamage = 2;
 
     public Player() {
         this.initialHP = 5;
         this.ShotCooldown = 0;
         this.HP = 5;
-        this.currency = 400;
+        this.currency = 0;
         this.speed = 7;
-        this.image = new GreenfootImage("Images/spaceship.png");
+        this.image = new GreenfootImage("images/spaceship.png");
         setImage(image);
+    }
+
+    public int getBulletDamage() {
+        return bulletDamage;
+    }
+
+    public void setBulletDamage(int bulletDamage) {
+        this.bulletDamage += bulletDamage;
     }
 
     public int getInitialHP() {
@@ -63,7 +74,7 @@ public class Player extends Actor {
     }
 
     public void shoot() {
-        Bullet bullet = new Bullet();
+        Bullet bullet = new Bullet(getBulletDamage());
         getWorld().addObject(bullet, getX(), getY());
         setShotCooldown(25);
     }
@@ -88,9 +99,9 @@ public class Player extends Actor {
         if (Greenfoot.isKeyDown("up") && ShotCooldown == 0) {
             shoot();
         }
-        if (HP == 0) {
-            getWorld().setBackground("Images/gameoverscreen.png");
-            getWorld().removeObjects(getWorld().getObjects(null));
+        if (HP <= 0) {
+            Gameover gameover = new Gameover();
+            Greenfoot.setWorld(gameover);
             Greenfoot.stop();
         }
     }

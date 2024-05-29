@@ -1,5 +1,8 @@
+package enemies;
+
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
+import player.Player;
 
 public class Enemy extends Actor {
     private int HP;
@@ -15,8 +18,8 @@ public class Enemy extends Actor {
         this.HP = 10;
         this.speed = 1;
         this.damage = 1;
-        this.loot = 2;
-        this.image = new GreenfootImage("Images/enemy1.png");
+        this.loot = 5;
+        this.image = new GreenfootImage("images/enemy1.png");
         this.spawnTimer = 200;
     }
 
@@ -86,7 +89,7 @@ public class Enemy extends Actor {
             getWorld().removeObject(this);
             return;
         }
-        if (HP == 0) {
+        if (HP <= 0) {
             getWorld().getObjects(Player.class).get(0).setCurrency(getWorld().getObjects(Player.class).get(0).getCurrency() + getLoot());
             getWorld().removeObject(this);
             HP = 10;
