@@ -1,5 +1,6 @@
 package worlds;
 
+import enemies.Enemy2;
 import greenfoot.World;
 import player.HUD.Currencybar;
 import player.HUD.Healthbar;
@@ -15,6 +16,7 @@ public class Space extends World {
     EnemySpawner enemySpawner = new EnemySpawner();
     Currencybar currencybar = new Currencybar();
     ShopOpenButton shopOpenButton = new ShopOpenButton();
+    Enemy2 enemy2 = new Enemy2();
 
 
     public Space() {

@@ -4,14 +4,14 @@ import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 import player.Player;
 
-public class EnemyAttack extends Actor {
+public class Enemy1Attack extends Actor {
 
     private final int speed;
     GreenfootImage image;
 
-    public EnemyAttack() {
+    public Enemy1Attack() {
         this.speed = 6;
-        this.image = new GreenfootImage("images/enemy_attack.png");
+        this.image = new GreenfootImage("images/enemy1_attack.png");
         setImage(image);
     }
 

@@ -4,7 +4,7 @@ import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 import player.Player;
 
-public class Enemy extends Actor {
+public class Enemy2 extends Actor {
     private int HP;
     private int speed;
     private int loot;
@@ -14,13 +14,13 @@ public class Enemy extends Actor {
     int cooldown = 0;
 
 
-    public Enemy() {
-        this.HP = 10;
+    public Enemy2() {
+        this.HP = 15;
         this.speed = 1;
         this.damage = 1;
-        this.loot = 5;
-        this.image = new GreenfootImage("images/enemy1.png");
-        this.spawnTimer = 200;
+        this.loot = 10;
+        this.image = new GreenfootImage("images/enemy2.png");
+        this.spawnTimer = 400;
     }
 
     public int getHP() {
@@ -64,9 +64,15 @@ public class Enemy extends Actor {
     }
 
     public void attack() {
-        EnemyAttack enemyAttack = new EnemyAttack();
+        Enemy2Attack enemyAttack = new Enemy2Attack();
         getWorld().addObject(enemyAttack, getX(), getY());
-        cooldown = 120;
+        cooldown = 80;
+    }
+    public void movementPattern(){
+        setLocation(getWorld().getWidth()/2, getWorld().getHeight()/3);
+        turn(speed-90);
+        move(100);
+        turn(90);
     }
 
     @Override
@@ -75,7 +81,7 @@ public class Enemy extends Actor {
             cooldown--;
         }
         setImage(image);
-        setLocation(getX(), getY() + speed);
+        movementPattern();
 
         if (cooldown == 0) {
             attack();
@@ -92,8 +98,7 @@ public class Enemy extends Actor {
         if (HP <= 0) {
             getWorld().getObjects(Player.class).get(0).setCurrency(getWorld().getObjects(Player.class).get(0).getCurrency() + getLoot());
             getWorld().removeObject(this);
-            HP = 10;
+            HP = 15;
         }
     }
 }
-

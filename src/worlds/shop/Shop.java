@@ -28,7 +28,7 @@ public class Shop extends World {
         showText("Your current currency is:  " + spaceWorld.getObjects(Player.class).get(0).getCurrency(), 150, 500);
         if (Greenfoot.isKeyDown("1") && spaceWorld.getObjects(Player.class).get(0).getCurrency() >= 50 && timer == 0) {
             if (spaceWorld.getObjects(Player.class).get(0).getHP() < 7) {
-                spaceWorld.getObjects(Player.class).get(0).setHP(spaceWorld.getObjects(Player.class).get(0).getHP() + 1);
+                spaceWorld.getObjects(Player.class).get(0).setHP(spaceWorld.getObjects(Player.class).get(0).getInitialHP() + 1);
                 spaceWorld.getObjects(Player.class).get(0).setInitialHP(spaceWorld.getObjects(Player.class).get(0).getInitialHP() + 1);
                 spaceWorld.getObjects(Player.class).get(0).setCurrency(spaceWorld.getObjects(Player.class).get(0).getCurrency() - 50);
                 timer = 50;

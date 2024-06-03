@@ -7,25 +7,40 @@ import java.util.Random;
 
 public class EnemySpawner extends Actor {
 
-    private int spawntimer;
-    Enemy enemy = new Enemy();
+    private int spawntimer1;
+    private int spawntimer2;
+    private int gametimer;
+    Enemy1 enemy1 = new Enemy1();
+    Enemy2 enemy2 = new Enemy2();
     Random random = new Random();
 
     public EnemySpawner() {
-        this.spawntimer = enemy.getSpawnTimer();
+        this.spawntimer1 = enemy1.getSpawnTimer();
+        this.spawntimer2 = enemy2.getSpawnTimer();
         setImage((GreenfootImage) null);
     }
 
     public void spawnEnemy() {
+        gametimer++;
 
-        if (spawntimer > 0) {
-            spawntimer--;
+        if (spawntimer1 > 0) {
+            spawntimer1--;
         }
-        if (spawntimer == 0) {
-            getWorld().addObject(enemy, random.nextInt(getWorld().getWidth()-100) , getY()-50);
-            spawntimer = enemy.getSpawnTimer();
+        if (spawntimer2 > 0) {
+            spawntimer2--;
         }
-
+        if (spawntimer1 == 0) {
+            getWorld().addObject(enemy1, random.nextInt(getWorld().getWidth()-100) , getY()-50);
+            if (gametimer == 1650){
+                getWorld().addObject(enemy1, random.nextInt(getWorld().getWidth()-100) , getY()-50);
+                gametimer = 0;
+            }
+            spawntimer1 = enemy1.getSpawnTimer();
+        }
+        if (spawntimer2 == 0){
+            getWorld().addObject(enemy2,0,0);
+            spawntimer2 = enemy2.getSpawnTimer();
+        }
     }
 
     @Override
