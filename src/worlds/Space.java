@@ -16,7 +16,7 @@ public class Space extends World {
     EnemySpawner enemySpawner = new EnemySpawner();
     Currencybar currencybar = new Currencybar();
     ShopOpenButton shopOpenButton = new ShopOpenButton();
-    Enemy2 enemy2 = new Enemy2();
+
 
 
     public Space() {
@@ -27,5 +27,10 @@ public class Space extends World {
         addObject(healthbar, 220, 50);
         addObject(currencybar, 50, 120);
         addObject(shopOpenButton,75,200);
+    }
+
+    @Override
+    public void act() {
+        showText("" + player.getScore(),600,20);
     }
 }

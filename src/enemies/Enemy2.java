@@ -88,6 +88,7 @@ public class Enemy2 extends Actor {
         }
         if (isTouching(Player.class)) {
             getIntersectingObjects(Player.class).get(0).setHP(getIntersectingObjects(Player.class).get(0).getHP() - 1);
+            getWorld().getObjects(Player.class).get(0).setScore(getWorld().getObjects(Player.class).get(0).getScore()-50);
             getWorld().removeObject(this);
             return;
         }
@@ -97,6 +98,8 @@ public class Enemy2 extends Actor {
         }
         if (HP <= 0) {
             getWorld().getObjects(Player.class).get(0).setCurrency(getWorld().getObjects(Player.class).get(0).getCurrency() + getLoot());
+            getWorld().getObjects(Player.class).get(0).setScore(getWorld().getObjects(Player.class).get(0).getScore()+200);
+            getWorld().getObjects(Player.class).get(0).setKills(getWorld().getObjects(Player.class).get(0).getKills()+1);
             getWorld().removeObject(this);
             HP = 15;
         }

@@ -20,6 +20,7 @@ public class Enemy1Attack extends Actor {
 
         if (isTouching(Player.class)) {
             getIntersectingObjects(Player.class).get(0).setHP(getIntersectingObjects(Player.class).get(0).getHP() - 1);
+            getWorld().getObjects(Player.class).get(0).setScore(getWorld().getObjects(Player.class).get(0).getScore() - 100);
             getWorld().removeObject(this);
             return;
         }

@@ -9,7 +9,7 @@ public class EnemySpawner extends Actor {
 
     private int spawntimer1;
     private int spawntimer2;
-    private int gametimer;
+    
     Enemy1 enemy1 = new Enemy1();
     Enemy2 enemy2 = new Enemy2();
     Random random = new Random();
@@ -21,8 +21,6 @@ public class EnemySpawner extends Actor {
     }
 
     public void spawnEnemy() {
-        gametimer++;
-
         if (spawntimer1 > 0) {
             spawntimer1--;
         }
@@ -31,10 +29,6 @@ public class EnemySpawner extends Actor {
         }
         if (spawntimer1 == 0) {
             getWorld().addObject(enemy1, random.nextInt(getWorld().getWidth()-100) , getY()-50);
-            if (gametimer == 1650){
-                getWorld().addObject(enemy1, random.nextInt(getWorld().getWidth()-100) , getY()-50);
-                gametimer = 0;
-            }
             spawntimer1 = enemy1.getSpawnTimer();
         }
         if (spawntimer2 == 0){

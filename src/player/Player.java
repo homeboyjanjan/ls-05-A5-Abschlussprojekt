@@ -8,6 +8,8 @@ import worlds.Gameover;
 public class Player extends Actor {
 
     private int HP;
+    private int score;
+    private int kills;
     private int initialHP;
     private int currency;
     private int speed;
@@ -21,8 +23,27 @@ public class Player extends Actor {
         this.HP = 5;
         this.currency = 0;
         this.speed = 7;
+        this.score = 0;
+        this.kills = 0;
         this.image = new GreenfootImage("images/spaceship.png");
         setImage(image);
+    }
+
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getKills() {
+        return kills;
+    }
+
+    public void setKills(int kills) {
+        this.kills = kills;
     }
 
     public int getBulletDamage() {
@@ -81,6 +102,7 @@ public class Player extends Actor {
 
     @Override
     public void act() {
+        score++;
         if (ShotCooldown > 0) {
             ShotCooldown--;
         }
